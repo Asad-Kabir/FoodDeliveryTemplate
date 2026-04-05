@@ -14,12 +14,14 @@ import {
   TouchableOpacity,
   Dimensions,
   Animated,
+  Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Colors } from '@theme/colors';
 import { Spacing, BorderRadius } from '@theme/spacing';
-import { FontSize, FontWeight } from '@theme/typography';
+import { FontSize, FontFamily } from '@theme/typography';
 import { ONBOARDING_DATA } from '@constants/index';
 import { RootStackParamList } from '@typings/index';
 
@@ -28,12 +30,9 @@ type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Onboarding'>;
 };
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 // ─── Slide Item Component ─────────────────────────────────
-/**
- * Individual onboarding slide
- */
 const SlideItem = ({ item }: { item: typeof ONBOARDING_DATA[0] }) => {
   return (
     <View style={[styles.slide, { backgroundColor: item.backgroundColor }]}>
@@ -52,9 +51,6 @@ const SlideItem = ({ item }: { item: typeof ONBOARDING_DATA[0] }) => {
 };
 
 // ─── Dot Indicator Component ──────────────────────────────
-/**
- * Animated pagination dots
- */
 const DotIndicator = ({ currentIndex }: { currentIndex: number }) => {
   return (
     <View style={styles.dotsContainer}>
@@ -81,7 +77,6 @@ const OnboardingScreen = ({ navigation }: Props) => {
   const flatListRef = useRef<FlatList>(null);
   const scrollX = useRef(new Animated.Value(0)).current;
 
-  // Handle next button
   const handleNext = () => {
     if (currentIndex < ONBOARDING_DATA.length - 1) {
       flatListRef.current?.scrollToIndex({
@@ -93,12 +88,10 @@ const OnboardingScreen = ({ navigation }: Props) => {
     }
   };
 
-  // Handle skip
   const handleSkip = () => {
     navigation.replace('Login');
   };
 
-  // Track current slide
   const handleScroll = (event: any) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / width);
     setCurrentIndex(index);
@@ -107,11 +100,16 @@ const OnboardingScreen = ({ navigation }: Props) => {
   const isLastSlide = currentIndex === ONBOARDING_DATA.length - 1;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+
       {/* Skip Button */}
       {!isLastSlide && (
-        <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
+        <TouchableOpacity
+          style={styles.skipButton}
+          onPress={handleSkip}
+          hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}>
           <Text style={styles.skipText}>Skip</Text>
+          <Icon name="chevron-forward" size={16} color={Colors.textSecondary} />
         </TouchableOpacity>
       )}
 
@@ -130,14 +128,21 @@ const OnboardingScreen = ({ navigation }: Props) => {
 
       {/* Bottom Section */}
       <View style={styles.bottomContainer}>
-        {/* Dot Indicators */}
         <DotIndicator currentIndex={currentIndex} />
 
         {/* Next / Get Started Button */}
-        <TouchableOpacity style={styles.button} onPress={handleNext}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleNext}
+          activeOpacity={0.8}>
           <Text style={styles.buttonText}>
-            {isLastSlide ? "Get Started 🚀" : "Next →"}
+            {isLastSlide ? 'Get Started' : 'Next'}
           </Text>
+          <Icon
+            name={isLastSlide ? 'rocket-outline' : 'arrow-forward'}
+            size={20}
+            color={Colors.textWhite}
+          />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -152,14 +157,20 @@ const styles = StyleSheet.create({
   },
   skipButton: {
     position: 'absolute',
-    top: Spacing.xl,
+    top: Platform.OS === 'ios' ? Spacing.xl + 44 : Spacing.xl,
     right: Spacing.lg,
-    zIndex: 1,
-    padding: Spacing.sm,
+    zIndex: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: Colors.backgroundGrey,
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: Spacing.xs,
+    borderRadius: BorderRadius.full,
   },
   skipText: {
-    fontSize: FontSize.md,
-    fontWeight: FontWeight.medium,
+    fontSize: FontSize.sm,
+    fontFamily: FontFamily.medium,
     color: Colors.textSecondary,
   },
   slide: {
@@ -191,7 +202,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: FontSize.xxxl,
-    fontWeight: FontWeight.bold,
+    fontFamily: FontFamily.bold,
     color: Colors.textPrimary,
     textAlign: 'center',
     marginBottom: Spacing.md,
@@ -199,6 +210,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: FontSize.md,
+    fontFamily: FontFamily.regular,
     color: Colors.textSecondary,
     textAlign: 'center',
     lineHeight: 24,
@@ -226,6 +238,9 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.md,
     borderRadius: BorderRadius.lg,
     alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: Spacing.sm,
     shadowColor: Colors.primary,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
@@ -234,7 +249,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: FontSize.lg,
-    fontWeight: FontWeight.bold,
+    fontFamily: FontFamily.bold,
     color: Colors.textWhite,
   },
 });
