@@ -1,11 +1,17 @@
 /**
  * @file typography.ts
- * @description Typography styles for the app
- * Usage: import { Typography } from '@theme/typography'
+ * @description Typography styles using Poppins font family
  */
 
 import { StyleSheet } from 'react-native';
 import { Colors } from './colors';
+
+export const FontFamily = {
+  regular: 'Poppins-Regular',
+  medium: 'Poppins-Medium',
+  semiBold: 'Poppins-SemiBold',
+  bold: 'Poppins-Bold',
+} as const;
 
 export const FontSize = {
   xs: 10,
@@ -28,42 +34,42 @@ export const FontWeight = {
 export const Typography = StyleSheet.create({
   displayBold: {
     fontSize: FontSize.display,
-    fontWeight: FontWeight.bold,
+    fontFamily: FontFamily.bold,
     color: Colors.textPrimary,
   },
   h1: {
     fontSize: FontSize.xxxl,
-    fontWeight: FontWeight.bold,
+    fontFamily: FontFamily.bold,
     color: Colors.textPrimary,
   },
   h2: {
     fontSize: FontSize.xxl,
-    fontWeight: FontWeight.semiBold,
+    fontFamily: FontFamily.semiBold,
     color: Colors.textPrimary,
   },
   h3: {
     fontSize: FontSize.xl,
-    fontWeight: FontWeight.semiBold,
+    fontFamily: FontFamily.semiBold,
     color: Colors.textPrimary,
   },
   body: {
     fontSize: FontSize.md,
-    fontWeight: FontWeight.regular,
+    fontFamily: FontFamily.regular,
     color: Colors.textPrimary,
   },
   bodySmall: {
     fontSize: FontSize.sm,
-    fontWeight: FontWeight.regular,
+    fontFamily: FontFamily.regular,
     color: Colors.textSecondary,
   },
   caption: {
     fontSize: FontSize.xs,
-    fontWeight: FontWeight.regular,
+    fontFamily: FontFamily.regular,
     color: Colors.textLight,
   },
   button: {
     fontSize: FontSize.md,
-    fontWeight: FontWeight.semiBold,
+    fontFamily: FontFamily.semiBold,
     color: Colors.textWhite,
   },
 });
