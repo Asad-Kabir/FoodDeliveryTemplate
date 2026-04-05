@@ -2,6 +2,7 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import RNBootSplash
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     reactNativeFactory = factory
 
     window = UIWindow(frame: UIScreen.main.bounds)
-
+    RNBootSplash.initWithStoryboard("BootSplash", rootView: window?.rootViewController?.view)
     factory.startReactNative(
       withModuleName: "FoodDeliveryTemplate",
       in: window,
