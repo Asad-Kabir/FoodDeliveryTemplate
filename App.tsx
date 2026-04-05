@@ -4,11 +4,17 @@
  */
 
 import AppNavigator from '@navigation/index';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-// import AppNavigator from '@navigation/index';
+import BootSplash from 'react-native-bootsplash'
 
 const App = () => {
+  useEffect(() => {
+    const hideSplash = async () => {
+      await BootSplash?.hide({ fade: true });
+    };
+    hideSplash();
+  }, []);
   return (
     <SafeAreaProvider>
       <AppNavigator />

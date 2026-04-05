@@ -11,6 +11,7 @@
 		0542CBC21C3147F580218D2C /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68A53AE0D0F743079EC61921 /* Poppins-ExtraLight.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-FoodDeliveryTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-FoodDeliveryTemplate.a */; };
 		0EBAA7A7743147BCAC50C488 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8000F66DEE9D4278B634DC5A /* Poppins-LightItalic.ttf */; };
+		0EDBD967109C4B6994FFFEB4 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F0DE9E37B04EE5A18E812F /* BootSplash.storyboard */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		14FD2386646C4E47B718D564 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 831BEEAFE1604BEA91E18F4A /* Poppins-ExtraBoldItalic.ttf */; };
 		40780F0E910F48659F482215 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2744968BE6B4D34B76B2DA2 /* Poppins-Black.ttf */; };
@@ -27,6 +28,7 @@
 		ABAD91DBA69A459D9D895E67 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2E59362B9DC4CBEBA51F726 /* Poppins-SemiBoldItalic.ttf */; };
 		B03AE7911E4343C1ADCA1D16 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 707585E60B71435D9876CA8C /* Poppins-Bold.ttf */; };
 		C1A490CADC6E411DB4125524 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D110E375F314CC9908BBC2E /* Poppins-BlackItalic.ttf */; };
+		CB786CF7C36D4F328C6967DC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB584511CBF44B6B670FB9C /* Colors.xcassets */; };
 		D35F2B2CC5A849309F6237AC /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC6C5D90459343B5B74C1928 /* Poppins-MediumItalic.ttf */; };
 		D7B4A2FC885343D7916A9226 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AC7E4FD0A1E443EAF0FE46B /* Poppins-ThinItalic.ttf */; };
 		EF7EE62E70BA430AB2DA06FA /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E196B99C57D144DABF477033 /* Poppins-Light.ttf */; };
@@ -37,6 +39,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FoodDeliveryTemplate/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FoodDeliveryTemplate/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = FoodDeliveryTemplate/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1DB584511CBF44B6B670FB9C /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = FoodDeliveryTemplate/Colors.xcassets; sourceTree = "<group>"; };
 		2508BF0F2A474D24B5B7F7EE /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-FoodDeliveryTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDeliveryTemplate.debug.xcconfig"; path = "Target Support Files/Pods-FoodDeliveryTemplate/Pods-FoodDeliveryTemplate.debug.xcconfig"; sourceTree = "<group>"; };
 		41C9E5BA00DE4A36A19A3128 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Thin.ttf"; path = "../src/assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 		5709B34CF0A7D63546082F79 /* Pods-FoodDeliveryTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDeliveryTemplate.release.xcconfig"; path = "Target Support Files/Pods-FoodDeliveryTemplate/Pods-FoodDeliveryTemplate.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-FoodDeliveryTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodDeliveryTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68A53AE0D0F743079EC61921 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLight.ttf"; path = "../src/assets/fonts/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		68F0DE9E37B04EE5A18E812F /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = FoodDeliveryTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
 		6D110E375F314CC9908BBC2E /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BlackItalic.ttf"; path = "../src/assets/fonts/Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		707585E60B71435D9876CA8C /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FoodDeliveryTemplate/AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				68F0DE9E37B04EE5A18E812F /* BootSplash.storyboard */,
+				1DB584511CBF44B6B670FB9C /* Colors.xcassets */,
 			);
 			name = FoodDeliveryTemplate;
 			sourceTree = "<group>";
@@ -242,6 +248,8 @@
 				97D18607DB344C1381C55115 /* Poppins-SemiBold.ttf in Resources */,
 				02876B3666E1436694D672CF /* Poppins-Italic.ttf in Resources */,
 				D35F2B2CC5A849309F6237AC /* Poppins-MediumItalic.ttf in Resources */,
+				0EDBD967109C4B6994FFFEB4 /* BootSplash.storyboard in Resources */,
+				CB786CF7C36D4F328C6967DC /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
