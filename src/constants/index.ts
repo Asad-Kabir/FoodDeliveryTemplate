@@ -98,3 +98,28 @@ export const FOOD_CATEGORIES = [
   { id: '5', name: 'Desserts', icon: '🍰' },
   { id: '6', name: 'Drinks', icon: '🥤' },
 ];
+
+// ─── Onboarding Data ──────────────────────────────────────
+export const ONBOARDING_DATA = [
+  {
+    id: '1',
+    title: 'Order From Best\nRestaurants',
+    subtitle: 'Discover the best restaurants near you and order your favorite food with ease.',
+    emoji: '🍔',
+    backgroundColor: '#FFF5F0',
+  },
+  {
+    id: '2',
+    title: 'Fast & Reliable\nDelivery',
+    subtitle: 'Get your food delivered hot and fresh right to your doorstep in minutes.',
+    emoji: '🚀',
+    backgroundColor: '#F0FFF4',
+  },
+  {
+    id: '3',
+    title: 'Track Your\nOrder Live',
+    subtitle: 'Real-time order tracking so you always know when your food will arrive.',
+    emoji: '📍',
+    backgroundColor: '#EBF8FF',
+  },
+];

@@ -22,7 +22,7 @@
       "@assets/*": ["assets/*"],
       "@utils/*": ["utils/*"],
       "@constants/*": ["constants/*"],
-      "@types/*": ["types/*"]
+      "@typings/*": ["types/*"]
     }
   }
 }
