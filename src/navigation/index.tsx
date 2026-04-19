@@ -17,6 +17,7 @@ import SignupScreen from '@screens/Auth/Signup/SignupScreen';
 import HomeScreen from '@screens/Home/HomeScreen';
 import CartScreen from '@screens/Cart/CartScreen';
 import ProfileScreen from '@screens/Profile/ProfileScreen';
+import RestaurantScreen from '@screens/Restaurant/RestaurantScreen';
 
 // ─── Types ────────────────────────────────────────────────
 import { RootStackParamList } from '@typings/index';
@@ -87,11 +88,12 @@ const RootNavigator = () => {
       screenOptions={{ headerShown: false }}>
       {/* Auth Screens */}
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-      {/* <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Signup" component={SignupScreen} /> */}
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Signup" component={SignupScreen} />
 
       {/* Main App */}
       <Stack.Screen name="MainTabs" component={MainTabs} />
+      <Stack.Screen name="RestaurantDetail" component={RestaurantScreen} />
     </Stack.Navigator>
   );
 };
