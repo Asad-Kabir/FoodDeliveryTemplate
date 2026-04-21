@@ -17,6 +17,8 @@ import { Spacing, BorderRadius } from '@theme/spacing';
 import { FontSize, FontFamily } from '@theme/typography';
 import { FoodItem } from '@typings/index';
 import { formatPrice } from '@utils/index';
+import { selectItemQuantity } from '@store/slices/cartSelectors';
+import { useAppSelector } from '@store/index';
 
 interface FoodItemCardProps {
   item: FoodItem;
@@ -25,7 +27,8 @@ interface FoodItemCardProps {
   onRemove: (id: string) => void;
 }
 
-const FoodItemCard = ({ item, quantity, onAdd, onRemove }: FoodItemCardProps) => {
+const FoodItemCard = ({ item, onAdd, onRemove }: FoodItemCardProps) => {
+  const quantity = useAppSelector(selectItemQuantity(item.id));
   return (
     <View style={[styles.card, !item.isAvailable && styles.unavailable]}>
       {/* Food Image */}

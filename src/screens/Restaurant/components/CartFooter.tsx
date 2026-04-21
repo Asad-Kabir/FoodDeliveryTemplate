@@ -1,28 +1,29 @@
 /**
  * @file CartFooter.tsx
- * @description Sticky cart footer shown when items are added
+ * @description Sticky cart footer — data from Redux store
  */
 
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import AppIcon from '@components/common/AppIcon';
 import { Colors } from '@theme/colors';
 import { Spacing, BorderRadius } from '@theme/spacing';
 import { FontSize, FontFamily } from '@theme/typography';
 import { formatPrice } from '@utils/index';
+import { useAppSelector } from '@store/index';
+import {
+  selectTotalItems,
+  selectSubtotal,
+} from '@store/slices/cartSelectors';
 
 interface CartFooterProps {
-  itemCount: number;
-  totalPrice: number;
   onPress: () => void;
 }
 
-const CartFooter = ({ itemCount, totalPrice, onPress }: CartFooterProps) => {
+const CartFooter = ({ onPress }: CartFooterProps) => {
+  const itemCount = useAppSelector(selectTotalItems);
+  const totalPrice = useAppSelector(selectSubtotal);
+
   if (itemCount === 0) return null;
 
   return (
@@ -31,13 +32,10 @@ const CartFooter = ({ itemCount, totalPrice, onPress }: CartFooterProps) => {
         style={styles.button}
         onPress={onPress}
         activeOpacity={0.8}>
-        {/* Item Count Badge */}
         <View style={styles.badge}>
           <Text style={styles.badgeText}>{itemCount}</Text>
         </View>
-
         <Text style={styles.buttonText}>View Cart</Text>
-
         <Text style={styles.price}>{formatPrice(totalPrice)}</Text>
       </TouchableOpacity>
     </View>

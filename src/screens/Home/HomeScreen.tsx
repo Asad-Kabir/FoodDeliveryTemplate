@@ -44,19 +44,13 @@ const HomeScreen = ({ navigation }: Props) => {
 
   const handleRestaurantPress = (id: string) => {
     // TODO: Navigate to RestaurantDetail
-    // console.log('Restaurant:', id);
     navigation.navigate('RestaurantDetail', { restaurantId: id });
-  };
-
-  const handleCartPress = () => {
-    // TODO: Navigate to Cart
-    console.log('Cart pressed');
   };
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       {/* Header */}
-      <HomeHeader onCartPress={handleCartPress} cartCount={2} />
+      <HomeHeader onCartPress={() => navigation.navigate('Cart')} />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
