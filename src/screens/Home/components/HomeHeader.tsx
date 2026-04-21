@@ -9,13 +9,15 @@ import AppIcon from '@components/common/AppIcon';
 import { Colors } from '@theme/colors';
 import { Spacing } from '@theme/spacing';
 import { FontSize, FontFamily } from '@theme/typography';
+import { selectTotalItems } from '@store/slices/cartSelectors';
+import { useAppSelector } from '@store/index';
 
 interface HomeHeaderProps {
   onCartPress: () => void;
-  cartCount?: number;
 }
 
-const HomeHeader = ({ onCartPress, cartCount = 0 }: HomeHeaderProps) => {
+const HomeHeader = ({ onCartPress }: HomeHeaderProps) => {
+  const cartCount = useAppSelector(selectTotalItems); // Redux cart
   return (
     <View style={styles.container}>
       {/* Location */}

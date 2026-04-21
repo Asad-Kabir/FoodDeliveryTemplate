@@ -94,6 +94,7 @@ const RootNavigator = () => {
       {/* Main App */}
       <Stack.Screen name="MainTabs" component={MainTabs} />
       <Stack.Screen name="RestaurantDetail" component={RestaurantScreen} />
+      <Stack.Screen name="Cart" component={CartScreen} />
     </Stack.Navigator>
   );
 };

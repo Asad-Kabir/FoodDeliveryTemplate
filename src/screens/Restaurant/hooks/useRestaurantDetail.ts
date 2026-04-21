@@ -1,57 +1,57 @@
 /**
  * @file useRestaurantDetail.ts
- * @description Restaurant detail screen data & state
+ * @description Restaurant detail — now uses Redux cart
  */
 
-import { useState, useMemo } from 'react';
+import { useMemo,useState } from 'react';
 import { DUMMY_RESTAURANTS, DUMMY_FOOD_ITEMS } from '@constants/index';
-import { FoodItem } from '@typings/index';
+import { useAppDispatch, useAppSelector } from '@store/index';
+import { addItem, removeItem } from '@store/slices/cartSlice';
+import {
+  selectTotalItems,
+  selectItemQuantity,
+} from '@store/slices/cartSelectors';
 
 const useRestaurantDetail = (restaurantId: string) => {
+  const dispatch = useAppDispatch();
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [cartItems, setCartItems] = useState<{ [key: string]: number }>({});
 
-  // Find restaurant
   const restaurant = DUMMY_RESTAURANTS.find(r => r.id === restaurantId);
-
-  // Get food items for this restaurant
   const foodItems = DUMMY_FOOD_ITEMS.filter(
     item => item.restaurantId === restaurantId,
   );
 
-  // Get unique categories
   const categories = useMemo(() => {
     const cats = [...new Set(foodItems.map(item => item.category))];
     return ['All', ...cats];
   }, [foodItems]);
 
-  // Filter by category
   const filteredItems = useMemo(() => {
     if (selectedCategory === 'All') return foodItems;
     return foodItems.filter(item => item.category === selectedCategory);
   }, [foodItems, selectedCategory]);
 
-  // Cart functions
-  const addToCart = (itemId: string) => {
-    setCartItems(prev => ({
-      ...prev,
-      [itemId]: (prev[itemId] || 0) + 1,
-    }));
+  // Redux cart
+  const totalCartItems = useAppSelector(selectTotalItems);
+
+  const getItemQuantity = (itemId: string) =>
+    useAppSelector(selectItemQuantity(itemId));
+
+  const handleAddToCart = (itemId: string) => {
+    const item = foodItems.find(f => f.id === itemId);
+    if (!item || !restaurant) return;
+    dispatch(
+      addItem({
+        foodItem: item,
+        restaurantId: restaurant.id,
+        restaurantName: restaurant.name,
+      }),
+    );
   };
 
-  const removeFromCart = (itemId: string) => {
-    setCartItems(prev => {
-      if (!prev[itemId] || prev[itemId] === 0) return prev;
-      return { ...prev, [itemId]: prev[itemId] - 1 };
-    });
+  const handleRemoveFromCart = (itemId: string) => {
+    dispatch(removeItem(itemId));
   };
-
-  const totalCartItems = Object.values(cartItems).reduce((a, b) => a + b, 0);
-
-  const totalCartPrice = Object.entries(cartItems).reduce((total, [id, qty]) => {
-    const item = foodItems.find(f => f.id === id);
-    return total + (item ? item.price * qty : 0);
-  }, 0);
 
   return {
     restaurant,
@@ -59,11 +59,10 @@ const useRestaurantDetail = (restaurantId: string) => {
     filteredItems,
     selectedCategory,
     setSelectedCategory,
-    cartItems,
-    addToCart,
-    removeFromCart,
     totalCartItems,
-    totalCartPrice,
+    getItemQuantity,
+    handleAddToCart,
+    handleRemoveFromCart,
   };
 };
 

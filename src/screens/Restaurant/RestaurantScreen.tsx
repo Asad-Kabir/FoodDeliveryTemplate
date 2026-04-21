@@ -26,6 +26,8 @@ import RestaurantHeader from './components/RestaurantHeader';
 import FoodItemCard from './components/FoodItemCard';
 import CartFooter from './components/CartFooter';
 import useRestaurantDetail from './hooks/useRestaurantDetail';
+import { useAppSelector } from '@store/index';
+import { selectItemQuantity } from '@store/slices/cartSelectors';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'RestaurantDetail'>;
@@ -42,11 +44,9 @@ const RestaurantScreen = ({ navigation, route }: Props) => {
     filteredItems,
     selectedCategory,
     setSelectedCategory,
-    cartItems,
-    addToCart,
-    removeFromCart,
-    totalCartItems,
-    totalCartPrice,
+    getItemQuantity,
+    handleAddToCart,
+    handleRemoveFromCart,
   } = useRestaurantDetail(restaurantId);
 
   if (!restaurant) {
@@ -62,9 +62,9 @@ const RestaurantScreen = ({ navigation, route }: Props) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={
-          totalCartItems > 0 ? styles.scrollWithCart : undefined
-        }>
-
+          getItemQuantity(restaurantId) > 0 ? styles.scrollWithCart : undefined
+        }
+      >
         {/* Header */}
         <RestaurantHeader
           restaurant={restaurant}
@@ -78,7 +78,8 @@ const RestaurantScreen = ({ navigation, route }: Props) => {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.categoryList}>
+            contentContainerStyle={styles.categoryList}
+          >
             {categories.map(category => (
               <TouchableOpacity
                 key={category}
@@ -87,13 +88,15 @@ const RestaurantScreen = ({ navigation, route }: Props) => {
                   selectedCategory === category && styles.categoryTabSelected,
                 ]}
                 onPress={() => setSelectedCategory(category)}
-                activeOpacity={0.8}>
+                activeOpacity={0.8}
+              >
                 <Text
                   style={[
                     styles.categoryTabText,
                     selectedCategory === category &&
                       styles.categoryTabTextSelected,
-                  ]}>
+                  ]}
+                >
                   {category}
                 </Text>
               </TouchableOpacity>
@@ -103,26 +106,21 @@ const RestaurantScreen = ({ navigation, route }: Props) => {
 
         {/* Food Items */}
         <View style={styles.itemsContainer}>
-          <Text style={styles.itemsCount}>
-            {filteredItems.length} items
-          </Text>
+          <Text style={styles.itemsCount}>{filteredItems.length} items</Text>
           {filteredItems.map(item => (
             <FoodItemCard
               key={item.id}
               item={item}
-              quantity={cartItems[item.id] || 0}
-              onAdd={addToCart}
-              onRemove={removeFromCart}
+              quantity={useAppSelector(selectItemQuantity(item.id))}
+              onAdd={handleAddToCart}
+              onRemove={handleRemoveFromCart}
             />
           ))}
         </View>
-
       </ScrollView>
 
       {/* Cart Footer */}
       <CartFooter
-        itemCount={totalCartItems}
-        totalPrice={totalCartPrice}
         onPress={() => navigation.navigate('Cart')}
       />
     </View>
@@ -142,7 +140,7 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.sm,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
-    marginVertical: Spacing.sm,
+    marginVertical: Spacing.md,
   },
   categoryList: {
     paddingHorizontal: Spacing.lg,
