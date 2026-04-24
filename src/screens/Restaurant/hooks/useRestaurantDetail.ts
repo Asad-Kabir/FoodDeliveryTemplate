@@ -3,14 +3,11 @@
  * @description Restaurant detail — now uses Redux cart
  */
 
-import { useMemo,useState } from 'react';
+import { useMemo, useState } from 'react';
 import { DUMMY_RESTAURANTS, DUMMY_FOOD_ITEMS } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@store/index';
 import { addItem, removeItem } from '@store/slices/cartSlice';
-import {
-  selectTotalItems,
-  selectItemQuantity,
-} from '@store/slices/cartSelectors';
+import { selectCartItems, selectTotalItems } from '@store/slices/cartSelectors';
 
 const useRestaurantDetail = (restaurantId: string) => {
   const dispatch = useAppDispatch();
@@ -33,9 +30,10 @@ const useRestaurantDetail = (restaurantId: string) => {
 
   // Redux cart
   const totalCartItems = useAppSelector(selectTotalItems);
+  const cartItems = useAppSelector(selectCartItems);
 
   const getItemQuantity = (itemId: string) =>
-    useAppSelector(selectItemQuantity(itemId));
+    cartItems.find(item => item.foodItem.id === itemId)?.quantity ?? 0;
 
   const handleAddToCart = (itemId: string) => {
     const item = foodItems.find(f => f.id === itemId);

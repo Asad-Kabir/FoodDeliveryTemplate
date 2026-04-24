@@ -10,7 +10,6 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  FlatList,
   TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -26,8 +25,6 @@ import RestaurantHeader from './components/RestaurantHeader';
 import FoodItemCard from './components/FoodItemCard';
 import CartFooter from './components/CartFooter';
 import useRestaurantDetail from './hooks/useRestaurantDetail';
-import { useAppSelector } from '@store/index';
-import { selectItemQuantity } from '@store/slices/cartSelectors';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'RestaurantDetail'>;
@@ -44,6 +41,7 @@ const RestaurantScreen = ({ navigation, route }: Props) => {
     filteredItems,
     selectedCategory,
     setSelectedCategory,
+    totalCartItems,
     getItemQuantity,
     handleAddToCart,
     handleRemoveFromCart,
@@ -62,7 +60,7 @@ const RestaurantScreen = ({ navigation, route }: Props) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={
-          getItemQuantity(restaurantId) > 0 ? styles.scrollWithCart : undefined
+          totalCartItems > 0 ? styles.scrollWithCart : undefined
         }
       >
         {/* Header */}
@@ -80,7 +78,7 @@ const RestaurantScreen = ({ navigation, route }: Props) => {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.categoryList}
           >
-            {categories.map(category => (
+            {categories?.map(category => (
               <TouchableOpacity
                 key={category}
                 style={[
@@ -111,7 +109,7 @@ const RestaurantScreen = ({ navigation, route }: Props) => {
             <FoodItemCard
               key={item.id}
               item={item}
-              quantity={useAppSelector(selectItemQuantity(item.id))}
+              quantity={getItemQuantity(item.id)}
               onAdd={handleAddToCart}
               onRemove={handleRemoveFromCart}
             />

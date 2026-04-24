@@ -127,3 +127,18 @@ export interface User {
     data: T;
     message?: string;
   }
+
+  // ─── Order Tracking Types ─────────────────────────────────
+export type OrderStep =
+| 'confirmed'
+| 'preparing'
+| 'on_the_way'
+| 'delivered';
+
+export interface TrackingStep {
+id: OrderStep;
+title: string;
+description: string;
+icon: string;
+time?: string;
+}

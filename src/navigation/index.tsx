@@ -18,6 +18,7 @@ import HomeScreen from '@screens/Home/HomeScreen';
 import CartScreen from '@screens/Cart/CartScreen';
 import ProfileScreen from '@screens/Profile/ProfileScreen';
 import RestaurantScreen from '@screens/Restaurant/RestaurantScreen';
+import OrderScreen from '@screens/Order/OrderScreen'
 
 // ─── Types ────────────────────────────────────────────────
 import { RootStackParamList } from '@typings/index';
@@ -95,6 +96,7 @@ const RootNavigator = () => {
       <Stack.Screen name="MainTabs" component={MainTabs} />
       <Stack.Screen name="RestaurantDetail" component={RestaurantScreen} />
       <Stack.Screen name="Cart" component={CartScreen} />
+      <Stack.Screen name="OrderTracking" component={OrderScreen} />
     </Stack.Navigator>
   );
 };
