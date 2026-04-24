@@ -202,7 +202,8 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '@theme/colors';
 
 // ─── Types ────────────────────────────────────────────────
-type IconSet = 'ionicons' | 'material';
+type IconSet = 'ionicons' | 'material' | 'checkmark' | 'bicycle' | 'happy' | 'call' | 'chatbubble-outline' | 'restaurant-outline';
+
 
 interface AppIconProps {
   name: string;
