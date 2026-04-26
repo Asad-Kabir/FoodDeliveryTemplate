@@ -202,7 +202,11 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '@theme/colors';
 
 // ─── Types ────────────────────────────────────────────────
-type IconSet = 'ionicons' | 'material' | 'checkmark' | 'bicycle' | 'happy' | 'call' | 'chatbubble-outline' | 'restaurant-outline';
+type IconSet = 'ionicons' | 'material' | 'checkmark' | 'bicycle' | 'happy' | 'call' | 'chatbubble-outline' | 'restaurant-outline' |
+'camera-outline' | 'create-outline' | 'card-outline' |
+'receipt-outline' | 'notifications-outline' | 'moon-outline' |
+'language-outline' | 'help-circle-outline' | 'shield-checkmark-outline' |
+'document-text-outline' | 'log-out-outline' | 'checkmark';
 
 
 interface AppIconProps {
