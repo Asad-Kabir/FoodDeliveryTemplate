@@ -1,99 +1,204 @@
-# FoodDeliveryTemplate
+# 🍔 FoodDelivery — React Native App Template
 
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+A fully functional, production-ready Food Delivery app template built with **React Native + TypeScript**. Clean code, scalable architecture, and beautiful UI — ready to customize and publish.
 
-# Getting Started
+![React Native](https://img.shields.io/badge/React_Native-0.76-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![Redux](https://img.shields.io/badge/Redux_Toolkit-2.0-purple?style=for-the-badge&logo=redux)
+![Platform](https://img.shields.io/badge/Platform-iOS_%7C_Android-green?style=for-the-badge)
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## ✨ Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- 🔐 **Auth Flow** — Onboarding, Login, Signup with validation
+- 🏠 **Home Screen** — Search, categories, featured & all restaurants
+- 🍽️ **Restaurant Detail** — Menu with categories, food items, add to cart
+- 🛒 **Cart** — Redux-powered global cart, promo codes, order summary
+- 📍 **Order Tracking** — Live animated order status with rider info
+- 👤 **Profile** — User info, settings, order history, logout
+- 🎨 **Clean UI** — Poppins font, consistent design system
+- 📱 **iOS & Android** — Fully tested on both platforms
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
-npm start
+## 🛠️ Tech Stack
 
-# OR using Yarn
-yarn start
+| Package | Version | Purpose |
+|--------|---------|---------|
+| React Native | 0.76 | Core framework |
+| TypeScript | 5.0 | Type safety |
+| Redux Toolkit | 2.0 | Global state (cart) |
+| React Navigation | 6.x | Navigation |
+| React Native Vector Icons | 10.x | Icons (Ionicons) |
+| React Native Bootsplash | 6.x | Splash screen |
+| React Native Safe Area Context | 4.x | Safe area handling |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── assets/
+│   ├── fonts/          # Poppins font family
+│   ├── images/         # App images & logo
+│   └── icons/          # Custom icons
+├── components/
+│   └── common/         # Reusable components
+│       ├── AppIcon.tsx         # Vector icons wrapper
+│       ├── SkeletonLoader.tsx  # Loading skeleton
+│       ├── FadeInView.tsx      # Fade animation
+│       └── SlideInView.tsx     # Slide animation
+├── constants/
+│   └── index.ts        # App constants & dummy data
+├── navigation/
+│   └── index.tsx       # Root navigation setup
+├── screens/
+│   ├── Auth/
+│   │   ├── Onboarding/ # 3-slide onboarding
+│   │   ├── Login/      # Email + Google + Apple login
+│   │   └── Signup/     # Full registration form
+│   ├── Home/           # Restaurant discovery
+│   ├── Restaurant/     # Menu & add to cart
+│   ├── Cart/           # Cart management
+│   ├── Order/          # Live order tracking
+│   └── Profile/        # User profile & settings
+├── store/
+│   ├── index.ts        # Redux store setup
+│   └── slices/
+│       ├── cartSlice.ts        # Cart state
+│       └── cartSelectors.ts    # Memoized selectors
+├── theme/
+│   ├── colors.ts       # Color palette
+│   ├── spacing.ts      # Spacing & border radius
+│   ├── typography.ts   # Font styles
+│   └── index.ts        # Theme exports
+├── types/
+│   └── index.ts        # TypeScript interfaces
+└── utils/
+    └── index.ts        # Helper functions
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## 🚀 Getting Started
 
-### Android
+### Prerequisites
 
-```sh
-# Using npm
-npm run android
+- Node.js >= 18
+- React Native CLI
+- Xcode (for iOS)
+- Android Studio (for Android)
 
-# OR using Yarn
-yarn android
+### Installation
+
+**1. Extract the project**
+```bash
+cd FoodDeliveryTemplate
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+**2. Install dependencies**
+```bash
+npm install
 ```
 
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
+**3. iOS — Install pods**
+```bash
+cd ios && pod install && cd ..
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+**4. Run on iOS**
+```bash
+npx react-native run-ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+**5. Run on Android**
+```bash
+npx react-native run-android
+```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+---
 
-## Step 3: Modify your app
+## 🎨 Customization
 
-Now that you have successfully run the app, let's make changes!
+### Colors
+Edit `src/theme/colors.ts`:
+```typescript
+export const Colors = {
+  primary: '#FF6B35',      // Change to your brand color
+  primaryDark: '#E55A25',
+};
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Fonts
+Replace font files in `src/assets/fonts/` and update `src/theme/typography.ts`.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### API Integration
+Replace dummy data in `src/constants/index.ts` with real API calls in `src/services/`.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+---
 
-## Congratulations! :tada:
+## 📱 Screens Overview
 
-You've successfully run and modified your React Native App. :partying_face:
+| Screen | Description |
+|--------|-------------|
+| Onboarding | 3 animated slides with skip/next |
+| Login | Email/password + Google + Apple |
+| Signup | Full registration with validation |
+| Home | Search, categories, restaurant lists |
+| Restaurant Detail | Menu tabs, food items, cart |
+| Cart | Items, promo code, order summary |
+| Order Tracking | Live animated status tracking |
+| Profile | Settings, account, logout |
 
-### Now what?
+---
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+## 🔧 Path Aliases
 
-# Troubleshooting
+```typescript
+@screens    → src/screens
+@components → src/components
+@navigation → src/navigation
+@store      → src/store
+@theme      → src/theme
+@assets     → src/assets
+@utils      → src/utils
+@constants  → src/constants
+@typings    → src/types
+```
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+---
 
-# Learn More
+## 📦 Redux Cart Usage
 
-To learn more about React Native, take a look at the following resources:
+```typescript
+import { useAppDispatch, useAppSelector } from '@store/index';
+import { addItem, removeItem, clearCart } from '@store/slices/cartSlice';
+import { selectTotalItems, selectSubtotal } from '@store/slices/cartSelectors';
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+// Add to cart
+dispatch(addItem({ foodItem, restaurantId, restaurantName }));
+
+// Get cart count
+const totalItems = useAppSelector(selectTotalItems);
+
+// Get subtotal
+const subtotal = useAppSelector(selectSubtotal);
+```
+
+---
+
+## 🆘 Support
+
+Questions or issues? Contact via Codecanyon comments section.
+
+---
+
+## 📄 License
+
+Licensed under Codecanyon Regular/Extended License.
+
+---
+
+*Built with React Native & TypeScript*
